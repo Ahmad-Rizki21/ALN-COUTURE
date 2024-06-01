@@ -1,3 +1,12 @@
+<?php
+
+    require "auth/crud.php";
+    require "auth/conetions.php";
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -144,7 +153,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./layout-blank.php">Tabel Data ALN</a></li>
-                            <li><a href="./layout-one-column.php">One Column</a></li>
+                            <!-- <li><a href="./layout-one-column.php">One Column</a></li> -->
                             <li><a href="./layout-two-column.php">Two column</a></li>
                         </ul>
                     </li>
@@ -204,45 +213,34 @@
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
+                                                <!-- <Button><a href="form-input.php"  data-placement="top" title="Add">TAMBAH DATA</a></Button> -->
+                                                <br>
+                                                <a href="form-input.php"><button class="btn btn-primary" data-placement="top" type="submit">Tambah Data</button></a>
+                                                
+                                                <br>
                                             <tbody>
+                                            <?php foreach ($orders as $order): ?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>Ahmad</td>
-                                                    <td>ALN-0001</td>
-                                                    <td>XL</td>
-                                                    <td>Jl. Bintara 1</td>
-                                                    <td>Packing</td>
-                                                    <td><span class="label gradient-1 rounded">LUNAS</span>
+                                                    <td><?php echo htmlspecialchars($order['no']); ?></td>
+                                                    <td><?php echo htmlspecialchars($order['nama']); ?></td>
+                                                    <td><?php echo htmlspecialchars($order['code']); ?></td>
+                                                    <td><?php echo htmlspecialchars($order['size']); ?></td>
+                                                    <td><?php echo htmlspecialchars($order['alamat']); ?></td>
+                                                    <td><?php echo htmlspecialchars($order['status_pengiriman']); ?></td>
+                                                    <td><span class="label gradient-1 rounded"><?php echo htmlspecialchars($order['status_pembayaran']); ?></span></td>
+                                                    
+                                                    <td><span>
+                                                            
+                                                        <a href="edit-data.php"><button class="edit-btn btn btn-info btn-sm" data-id="<?php echo $order['id']; ?>" data-placement="top" type="button">Edit Data</button></a>
 
-                                                        <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
-                                                        </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Aul</td>
-                                                    <td>ALN-0004</td>
-                                                    <td>XXL</td>
-                                                    <td>Jl. Bintara 1</td>
-                                                    <td>Packing</td>
-                                                    <td><span class="label gradient-2 rounded">COD</span>
-
-                                                        <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
-                                                        </td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Langit</td>
-                                                    <td>ALN-0091</td>
-                                                    <td>XL</td>
-                                                    <td>Jl. Bintara 2</td>
-                                                    <td>Packing</td>
-                                                    <td><span class="label gradient-1 rounded">LUNAS</span>
-
-                                                        <td><span><a href="#" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a><a href="#" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a></span>
-                                                        </td>
-
-                                                </tr>
+                                                        <button class="delete-btn btn btn-danger btn-sm" data-id="<?php echo $order['id']; ?>"data-placement="top" type="submit">Delate</button>
+                                                        
+                                                    </span>
+                                                    </td>
+                                                <td>    
+                                                </td>
+                                            
+                                                <?php endforeach; ?>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
@@ -300,6 +298,19 @@
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.delete-btn').click(function() {
+                var id = $(this).data('id');
+                if (confirm('Lu Serius Mau Ngapus Data Ini Nge ?')) {
+                    $.post('auth/delete.php', { id: id }, function(response) {
+                        location.reload();
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 

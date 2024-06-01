@@ -1,3 +1,9 @@
+<?php
+
+require "auth/crud.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -291,6 +297,10 @@
                         </ul> -->
                     </li>
 
+
+
+
+
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-notebook menu-icon"></i><span class="nav-text">Pages</span>
@@ -307,109 +317,140 @@
         <!--**********************************
             Sidebar end
         ***********************************-->
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
 
         <!--**********************************
             Content body start
         ***********************************-->
         <div class="content-body">
 
-            <div class="container-fluid mt-3">
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Information</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Table Data ALN</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Input Data</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-1">
+                    <div class="col-lg-12">
+                        <div class="card">
                             <div class="card-body">
-                                <h3 class="card-title text-white">Products Terjual</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">00</h2>
-                                    <p class="text-white mb-0">Juni - July 2024</p>
+                                <h4 class="card-title">Masukan Data Baru Untuk Internal Pemjualan</h4>
+                                <br>
+                                <div class="basic-form">
+                                    
+                                    <!-- FORM Input -->
+
+                                    <form method="post" action="auth/crud.php">
+
+                                        <!-- Nama Pembeli -->
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap">
+                                            </div>    
+                                        </div>
+                                            <br>
+
+                                        <!-- Nama Pembeli -->
+
+                                        <!-- Untuk Code Baju -->
+                                            <div class="form-group">
+                                            <select class="form-control" id="sel1" name="code">
+                                                <option selected="selected">Pilih Code Baju</option>
+                                                <option>#BW-0110</option>
+                                                <option>#WH-0220</option>
+                                                <option>#BCK-0330</option>
+                                            </select>
+                                        </div>
+                                        <!-- Untuk Code Baju -->
+
+                                        <!-- Untuk Size Baju -->
+                                        <h1 class="card-title">Masukan Size/Ukuran Baju</h1>
+                                        <div class="form-group">
+                                            
+                                            <label class="radio-inline mr-3">
+                                                <input type="radio" name="size"> M </label>
+                                            <label class="radio-inline mr-3">
+                                                <input type="radio" name="size"> L </label>
+                                            <label class="radio-inline mr-3 ">
+                                                <input type="radio" name="size"> XL </label>
+                                            <label class="radio-inline mr-3">
+                                                <input type="radio" name="size"> XXL </label>
+                                        </div>
+                                        <!-- Untuk Size Baju -->
+
+                                        <!-- Untuk Alamat -->
+                                        <!-- <h2 class="card-title">Masukan Alamat</h2> -->
+                                        <div class="form-group">
+                                            <input type="text" name="alamat" class="form-control input-default" placeholder="Masukan Alamat Pembeli">
+                                        </div>
+                                        <!-- Untuk Alamat -->
+
+                                        <!-- Untuk Status Pengiriman -->
+                                        <div class="form-row align-items-center">
+                                            <div class="col">
+                                                 <h1 class="card-title">Update Pengiriman</h1>
+                                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="status_pengiriman">
+                                                    <option selected="selected">Pilih...</option>
+                                                    <option value="Packing">Packing</option>
+                                                    <option value="Pengiriman">Pengiriman</option>
+                                                    <option value="Dalam Perjalanan">Dalam Perjalanan</option>
+                                                    <option value="Sampai Tujuan">Sampai Tujuan</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <!-- Untuk Status Pengiriman -->
+
+                                        <div class="form-row align-items">
+                                            <div class="col">
+                                                 <h1 class="card-title">Status Pembayaran</h1>
+                                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="status_pembayaran">
+                                                    <option selected="selected">Pilih...</option>
+                                                    <option value="COD">COD</option>
+                                                    <option value="Transfer">Transfer</option>
+                                                    <option value="E-Wallet - Dana dll">E-Wallet - Dana dll</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <button class="btn btn-info btn-sm" name="create" data-placement="top" type="submit">Simpan</button>
+                                    
+                                </form> 
+                                    <!-- FORM Input -->
+
                                 </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-2">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Profit Aln.CO</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">Rp. 000</h2>
-                                    <p class="text-white mb-0">Juni - July 2024</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-3">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Jumlah Customers</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">000</h2>
-                                    <p class="text-white mb-0">Juni - July 2024</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card gradient-4">
-                            <div class="card-body">
-                                <h3 class="card-title text-white">Stok Products</h3>
-                                <div class="d-inline-block">
-                                    <h2 class="text-white">100</h2>
-                                    <p class="text-white mb-0">Juni - July 2024</p>
-                                </div>
-                                <span class="float-right display-5 opacity-5"><i class="fa-solid fa-box-open"></i></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <!-- #/ container -->
         </div>
-
-        <!-- <div class="col-lg-3 col-md-9">
-            <div class="card">
-                <div class="card-body px-0">
-                    <h4 class="card-title px-4 mb-3">Todo</h4>
-                    <div class="todo-list">
-                        <div class="tdl-holder">
-                            <div class="tdl-content">
-                                <ul id="todo_list">
-                                    <li><label><input type="checkbox"><i></i><span>Get up</span><a href='#' class="ti-trash"></a></label></li>
-                                    <li><label><input type="checkbox" checked><i></i><span>Stand up</span><a href='#' class="ti-trash"></a></label></li>
-                                    <li><label><input type="checkbox"><i></i><span>Don't give up the fight.</span><a href='#' class="ti-trash"></a></label></li>
-                                    <li><label><input type="checkbox" checked><i></i><span>Do something else</span><a href='#' class="ti-trash"></a></label></li>
-                                </ul>
-                            </div>
-                            <div class="px-4">
-                                <input type="text" class="tdl-new form-control" placeholder="Write new item and hit 'Enter'...">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-
-    </div>
-    <!-- #/ container -->
-    </div>
-    <!--**********************************
+        <!--**********************************
             Content body end
         ***********************************-->
-
-
-    <!--**********************************
+        
+        
+        <!--**********************************
             Footer start
         ***********************************-->
-    <div class="footer">
-        <div class="copyright">
-            <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
         </div>
-    </div>
-    <!--**********************************
+        <!--**********************************
             Footer end
         ***********************************-->
     </div>
@@ -425,28 +466,6 @@
     <script src="js/settings.js"></script>
     <script src="js/gleek.js"></script>
     <script src="js/styleSwitcher.js"></script>
-
-    <!-- Chartjs -->
-    <script src="./plugins/chart.js/Chart.bundle.min.js"></script>
-    <!-- Circle progress -->
-    <script src="./plugins/circle-progress/circle-progress.min.js"></script>
-    <!-- Datamap -->
-    <script src="./plugins/d3v3/index.js"></script>
-    <script src="./plugins/topojson/topojson.min.js"></script>
-    <script src="./plugins/datamaps/datamaps.world.min.js"></script>
-    <!-- Morrisjs -->
-    <script src="./plugins/raphael/raphael.min.js"></script>
-    <script src="./plugins/morris/morris.min.js"></script>
-    <!-- Pignose Calender -->
-    <script src="./plugins/moment/moment.min.js"></script>
-    <script src="./plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-    <!-- ChartistJS -->
-    <script src="./plugins/chartist/js/chartist.min.js"></script>
-    <script src="./plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-
-
-
-    <script src="./js/dashboard/dashboard-1.js"></script>
 
 </body>
 

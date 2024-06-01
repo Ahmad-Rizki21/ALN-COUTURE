@@ -273,7 +273,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./layout-blank.php">Tabel Data ALN</a></li>
-                            <li><a href="./layout-one-column.php">One Column</a></li>
+                            <!-- <li><a href="./layout-one-column.php">One Column</a></li> -->
                             <li><a href="./layout-two-column.php">Two column</a></li>
                             <!-- <li><a href="./layout-fixed-header.php">Fixed Header</a></li>
                             <li><a href="layout-fixed-sidebar.php">Fixed Sidebar</a></li> -->
