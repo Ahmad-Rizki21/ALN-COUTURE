@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Dashboard ALN.COUTURE</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
@@ -41,8 +41,8 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="index.php">
-                    <b class="logo-abbr"><img src="../img/ALN.COUTURE INDEPENDEN.png" alt=""> </b>
-                    <span class="logo-compact"><img src="../img/ALN.COUTURE INDEPENDEN.png" alt=""></span>
+                    <b class="logo-abbr"><img src="images/favicon-32x32.png" alt=""> </b>
+                    <span class="logo-compact"><img src="images/favicon-32x32.png" alt=""></span>
                     <span class="brand-title">
                         <!-- <img src="images/logo-text.png" alt=""> -->
                             <h3>ALN.COUTURE</h3>
@@ -97,7 +97,7 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <!-- <span class="activity active"></span> -->
-                                <img src="../img/favicon-32x32.png" height="40" width="40" alt="">
+                                <img src="images/Capture.PNG" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile   dropdown-menu">
                                 <div class="dropdown-content-body">

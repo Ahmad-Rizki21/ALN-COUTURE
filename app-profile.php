@@ -11,7 +11,7 @@
 
     <title>Dashboard ALN.COUTURE</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <!-- Pignose Calender -->
     <link href="./plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
@@ -50,8 +50,8 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="index.php">
-                    <b class="logo-abbr"><img src="../img/ALN.COUTURE INDEPENDEN.png" alt=""> </b>
-                    <span class="logo-compact"><img src="../img/ALN.COUTURE INDEPENDEN.png" alt=""></span>
+                    <b class="logo-abbr"><img src="images/favicon-32x32.png" alt=""> </b>
+                    <span class="logo-compact"><img src="images/favicon-32x32.png" alt=""></span>
                     <span class="brand-title">
                         <!-- <img src="images/logo-text.png" alt=""> -->
                             <h3>ALN.COUTURE</h3>
@@ -219,7 +219,7 @@
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <!-- <span class="activity active"></span> -->
-                                <img src="../img/favicon-32x32.png" height="40" width="40" alt="">
+                                <img src="images/Capture.PNG" height="40" width="40" alt="">
                             </div>
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -333,7 +333,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="media align-items-center mb-9">
-                                    <img class="mr-5" src="../img/ALN.COUTURE INDEPENDEN.png" width="90" height="90" alt="">
+                                    <img class="mr-5" src="images/Capture.PNG" width="90" height="90" alt="">
                                     <div class="media-body">
                                         <h3 class="mb-0">Aln.Couture</h3>
                                         <p class="text-muted mb-0">FASHION SHOP</p>
