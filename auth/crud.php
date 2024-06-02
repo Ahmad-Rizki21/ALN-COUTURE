@@ -1,7 +1,6 @@
 <?php
 require 'conetions.php';
 
-// CREATE
 if (isset($_POST['create'])) {
     $nama = $_POST['nama'];
     $code = $_POST['code'];
@@ -10,20 +9,23 @@ if (isset($_POST['create'])) {
     $status_pengiriman = $_POST['status_pengiriman'];
     $status_pembayaran = $_POST['status_pembayaran'];
 
-    $sql = "INSERT INTO data (nama, code, size, alamat, status_pengiriman, status_pembayaran) VALUES (:nama, :code, :size, :alamat, :status_pengiriman, :status_pembayaran)";
+    $sql = "INSERT INTO orders (nama, code, size, alamat, status_pengiriman, status_pembayaran) VALUES (:nama, :code, :size, :alamat, :status_pengiriman, :status_pembayaran)";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['nama' => $nama, 'code' => $code, 'size' => $size, 'alamat' => $alamat, 'status_pengiriman' => $status_pengiriman, 'status_pembayaran' => $status_pembayaran]);
-    header("Location: ../layout-blank.php");
+    $stmt->execute([
+        ':nama' => $nama,
+        ':code' => $code,
+        ':size' => $size,
+        ':alamat' => $alamat,
+        ':status_pengiriman' => $status_pengiriman, 
+        ':status_pembayaran' => $status_pembayaran
+    ]);
+
+    header('Location: ../layout-blank.php');
+    exit();
 }
 
-// READ
-$sql = "SELECT * FROM data";
-$stmt = $pdo->query($sql);
-$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// UPDATE
 if (isset($_POST['update'])) {
-    $id = $_POST['id'];
+    $no = $_POST['no'];
     $nama = $_POST['nama'];
     $code = $_POST['code'];
     $size = $_POST['size'];
@@ -31,18 +33,31 @@ if (isset($_POST['update'])) {
     $status_pengiriman = $_POST['status_pengiriman'];
     $status_pembayaran = $_POST['status_pembayaran'];
 
-    $sql = "UPDATE data SET nama = :nama, code = :code, size = :size, alamat = :alamat, status_pengiriman = :status_pengiriman, status_pembayaran = :status_pembayaran WHERE id = :id";
+    $sql = "UPDATE orders SET nama = :nama, code = :code, size = :size, alamat = :alamat, status_pengiriman = :status_pengiriman, status_pembayaran = :status_pembayaran WHERE no = :no";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['nama' => $nama, 'code' => $code, 'size' => $size, 'alamat' => $alamat, 'status_pengiriman' => $status_pengiriman, 'status_pembayaran' => $status_pembayaran, 'id' => $id]);
-    header("Location: ../layout-blank.php");
+    $stmt->execute([
+        ':no' => $no,
+        ':nama' => $nama,
+        ':code' => $code,
+        ':size' => $size,
+        ':alamat' => $alamat,
+        ':status_pengiriman' => $status_pengiriman,
+        ':status_pembayaran' => $status_pembayaran
+    ]);
+
+    header('Location: ../layout-blank.php');
+    exit();
 }
 
-// DELETE
+// Delete order
+// Delete order
 if (isset($_POST['delete'])) {
-    $id = $_POST['id'];
-    $sql = "DELETE FROM data WHERE id = :id";
+    $no = $_POST['no'];
+    $sql = "DELETE FROM orders WHERE no = :no";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['id' => $id]);
-    header("Location: ../layout-blank.php");
+    $stmt->execute([':no' => $no]);
+
+    header('Location: index.php');
+    exit();
 }
 ?>

@@ -1,12 +1,9 @@
-
-
-
 <?php
-$host = '127.0.0.1';
-$db = 'alncouture';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
+$host = 'localhost'; // Ganti dengan host database Anda
+$db   = 'alncouture'; // Ganti dengan nama database Anda
+$user = 'root'; // Ganti dengan nama pengguna database Anda
+$pass = ''; // Ganti dengan kata sandi database Anda
+$charset = 'utf8mb4'; // Karakter set yang digunakan oleh database
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [

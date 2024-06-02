@@ -2,8 +2,20 @@
 
     require "auth/crud.php";
     require "auth/conetions.php";
-
-
+    require "auth/delete.php";
+   
+    try {
+        $sql = "SELECT * FROM orders";
+        $stmt = $pdo->query($sql);
+        $orders = $stmt->fetchAll();
+    
+        if (empty($orders)) {
+            echo "No orders found.";
+        }
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+   
 ?>
 
 
@@ -219,28 +231,39 @@
                                                 
                                                 <br>
                                             <tbody>
-                                            <?php foreach ($orders as $order): ?>
+                                            <?php
+                                                    if (!empty($orders)):
+                                                        foreach ($orders as $order):
+                                                        
+                                                        ?>
                                                 <tr>
-                                                    <td><?php echo htmlspecialchars($order['no']); ?></td>
-                                                    <td><?php echo htmlspecialchars($order['nama']); ?></td>
-                                                    <td><?php echo htmlspecialchars($order['code']); ?></td>
-                                                    <td><?php echo htmlspecialchars($order['size']); ?></td>
-                                                    <td><?php echo htmlspecialchars($order['alamat']); ?></td>
-                                                    <td><?php echo htmlspecialchars($order['status_pengiriman']); ?></td>
-                                                    <td><span class="label gradient-1 rounded"><?php echo htmlspecialchars($order['status_pembayaran']); ?></span></td>
+                                                <td><?php echo htmlspecialchars($order['no']); ?></td>
+                                                <td><?php echo htmlspecialchars($order['nama']); ?></td>
+                                                <td><?php echo htmlspecialchars($order['code']); ?></td>
+                                                <td><?php echo htmlspecialchars($order['size']); ?></td>
+                                                <td><?php echo htmlspecialchars($order['alamat']); ?></td>
+                                                <td><?php echo htmlspecialchars($order['status_pengiriman']); ?></td>
+                                                <td><span class="label gradient-1 rounded"><?php echo htmlspecialchars($order['status_pembayaran']); ?></span></td>
                                                     
                                                     <td><span>
-                                                            
-                                                        <a href="edit-data.php"><button class="edit-btn btn btn-info btn-sm" data-id="<?php echo $order['id']; ?>" data-placement="top" type="button">Edit Data</button></a>
 
-                                                        <button class="delete-btn btn btn-danger btn-sm" data-id="<?php echo $order['id']; ?>"data-placement="top" type="submit">Delate</button>
-                                                        
+                                                       <!-- Button Untuk Edit -->     
+                                                       <a href="edit-data.php"><button class="edit-btn btn btn-info btn-sm" data-id="<?php echo $order['no']; ?>" data-placement="top" type="button">Edit Data</button></a>
+                                                       <!-- Button Untuk Edit -->     
+
+                                                        <!-- Button Untuk Delete -->
+                                                        <form method="post" action="auth/crud.php" style="display:inline;">
+                                                            <input type="hidden" name="no" value="<?php echo $order['no']; ?>">
+                                                            <button  class="delete-btn btn btn-danger btn-sm" name="delete" data-placement="top" type="submit" >Delate</button>
+                                                        </form>
+                                                        <!-- Button Untuk Delete -->
+
                                                     </span>
                                                     </td>
                                                 <td>    
                                                 </td>
-                                            
                                                 <?php endforeach; ?>
+                                                <?php endif; ?>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
@@ -302,9 +325,9 @@
     <script>
         $(document).ready(function() {
             $('.delete-btn').click(function() {
-                var id = $(this).data('id');
+                var no = $(this).data('no');
                 if (confirm('Lu Serius Mau Ngapus Data Ini Nge ?')) {
-                    $.post('auth/delete.php', { id: id }, function(response) {
+                    $.post('auth/delete.php', { no: no }, function(response) {
                         location.reload();
                     });
                 }
